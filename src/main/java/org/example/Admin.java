@@ -55,6 +55,21 @@ public class Admin {
         Product p = new Product(name,id,quantity);
         products.add(p);
     }
+
+    public boolean checkLogin(String username,String password){
+        if(username == adminName){
+            if(password == adminPass){
+                System.out.println("welcome " + adminName);
+                return true;
+            }
+            else {
+                System.out.println("wrong password");
+                return false;
+            }
+        }
+        System.out.println("invalid username");
+        return false;
+    }
     public Admin(ArrayList<Product> products,ArrayList<User> users,String adminName,String adminPass){
         this.products = products;
         this.users = users;
