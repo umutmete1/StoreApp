@@ -23,18 +23,8 @@ public class Main {
                 String adminName = scanner.nextLine();
                 System.out.println("Enter password \n");
                 String adminPass = scanner.nextLine();
-                if(Objects.equals(adminName, admin.getAdminName())){
-                    if(Objects.equals(adminPass, admin.getAdminPass())){
-                        adminMenu(admin);
-                    }
-                    else{
-                        System.out.println("invalid password");
-                        System.exit(0);
-                    }
-                }
-                else{
-                    System.out.println("invalid username");
-                    System.exit(0);
+                if(admin.checkLogin(adminName,adminPass)){
+                    adminMenu(admin);
                 }
                 break;
             case 2:
