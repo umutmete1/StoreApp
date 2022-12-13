@@ -3,8 +3,7 @@ import org.example.Product;
 import org.example.User;
 import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
