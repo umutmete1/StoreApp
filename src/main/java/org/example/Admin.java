@@ -42,12 +42,14 @@ public class Admin {
             }
         }
     }
-    public void removeUser(String name){
+    public boolean removeUser(String name){
         for(int i = 0 ; i<users.size(); i++){
             if(Objects.equals(users.get(i).getUsername(), name)){
                 users.remove(i);
+                return true;
             }
         }
+        return false;
     }
     public void addProduct(String name,String id,int quantity){
         Product p = new Product(name,id,quantity);

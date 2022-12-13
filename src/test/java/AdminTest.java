@@ -7,16 +7,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AdminTest {
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    @BeforeEach
-    public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
     @Test
     @DisplayName("Remove User Test")
     void adminShouldRemoveUser(){
@@ -29,11 +22,31 @@ public class AdminTest {
         products.add(product2);
         var user0 = new User("umut","123",products);
         var user1 = new User("hasan","456",products);
+        var user2 = new User("doğa","789",products);
         ArrayList<User> users = new ArrayList<User>();
         users.add(user0);
         users.add(user1);
-        assertEquals("User{username='umut'}",outputStreamCaptor.toString()
-                .trim());
+        users.add(user2);
+        var admin = new Admin(products,users,"doğa","3131");
+        ArrayList<String> usersToBeRemoved = new ArrayList<>();
+        usersToBeRemoved.add("hasan");
+        usersToBeRemoved.add("doğa");
+        int count=usersToBeRemoved.size();
+        for (String s : usersToBeRemoved){
+            if (count!=0){
+                if(admin.removeUser(s)){
+                    count--;
+                }
+            }
+
+        }
+
+        if(count == 0){
+            return;
+        }
+        else {
+            fail();
+        }
     }
 
 }
